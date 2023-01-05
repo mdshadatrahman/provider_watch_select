@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
@@ -31,6 +32,12 @@ class BaseObject {
   BaseObject()
       : id = const Uuid().v4(),
         lastUpdate = DateTime.now().toIso8601String();
+
+  @override
+  bool operator ==(covariant BaseObject other) => id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
 
 class HomePage extends StatelessWidget {
