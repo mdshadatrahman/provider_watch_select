@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +21,16 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
     );
   }
+}
+
+//base class
+@immutable
+class BaseObject {
+  final String id;
+  final String lastUpdate;
+  BaseObject()
+      : id = const Uuid().v4(),
+        lastUpdate = DateTime.now().toIso8601String();
 }
 
 class HomePage extends StatelessWidget {
